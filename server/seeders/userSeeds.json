@@ -1,0 +1,73 @@
+const db = require('../config/connection');
+const { User } = require('../models');
+
+const userSeeds = [
+  {
+    "username": "brian_kernighan",
+    "email": "bkernighan@example.com",
+    "password": "password01"
+  },
+  {
+    "username": "max_alexander",
+    "email": "mkanatalexander@example.com",
+    "password": "password02"
+  },
+  {
+    "username": "lucky_stiff",
+    "email": "wtls@example.com",
+    "password": "password03"
+  },
+  {
+    "username": "kent_beck",
+    "email": "kbeck@example.com",
+    "password": "password04"
+  },
+  {
+    "username": "edward_berard",
+    "email": "evberard@example.com",
+    "password": "password05"
+  },
+  {
+    "username": "alan_kay",
+    "email": "akay@example.com",
+    "password": "password06"
+  },
+  {
+    "username": "car_hoare",
+    "email": "choare@example.com",
+    "password": "password07"
+  },
+  {
+    "username": "david_thomas",
+    "email": "dthomas@example.com",
+    "password": "password08"
+  },
+  {
+    "username": "donald_knuth",
+    "email": "dknuth@example.com",
+    "password": "password09"
+  },
+  {
+    "username": "lernantino",
+    "email": "lernantino@example.com",
+    "password": "password10"
+  }
+];
+
+const populateUsers = async () => {
+  try {
+    await db.once('open');
+
+    await User.deleteMany({});
+
+    await User.create(userSeeds);
+
+    console.log('Data population completed!');
+  } catch (err) {
+    console.error('Error populating data:', err);
+  } finally {
+    process.exit(0);
+  }
+};
+
+populateUsers();
