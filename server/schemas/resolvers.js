@@ -39,8 +39,8 @@ const resolvers = {
       
       // The user is authenticated, continue with the addUser mutation
       try {
-        const { username, email, password, mobile Number, address, userRole } = input;
-        const newUser = await User.create({ username, email, password, Mobile Number, address, userRole });
+        const { username, email, password, mobileNumber, address, userRole } = input;
+        const newUser = await User.create({ username, email, password, MobileNumber, address, userRole });
   
         const token = signToken(newUser);
   
