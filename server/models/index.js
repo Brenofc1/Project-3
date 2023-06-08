@@ -1,13 +1,12 @@
-import 'dotenv/config'
-import mongoose from 'mongoose';
-import { ApolloServer } from 'apollo-server-express';
+require('dotenv').config();
 
 const express = require('express');
 const mongoose = require('mongoose');
+const { ApolloServer } = require('apollo-server-express');
 
 const User = require('./User');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/tech-solutions-db');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/IT-service');
 
 const app = express();
 const PORT = process.env.PORT || 3000;

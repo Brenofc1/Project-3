@@ -37,15 +37,13 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in to perform this operation.');
       }
       
-      // Check if the authenticated user has the necessary permissions to add a user
-      // You can implement your own authorization logic here
-      
+      // The user is authenticated, continue with the addUser mutation
       try {
-        const { username, email, password } = input;
-        const newUser = await User.create({ username, email, password });
-
+        const { username, email, password, mobile Number, address, userRole } = input;
+        const newUser = await User.create({ username, email, password, Mobile Number, address, userRole });
+  
         const token = signToken(newUser);
-
+  
         return { token, user: newUser };
       } catch (error) {
         throw new Error('Failed to create a new user.');
